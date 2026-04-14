@@ -193,7 +193,7 @@ export default function HeroSection() {
         </div>
 
         {/* Notebook / Mockup */}
-        <div ref={mockupRef} className="relative mt-12">
+        <div ref={mockupRef} className="relative mt-4">
           <img
             src="/hero-mockup.png"
             alt="DAMazing dashboard"

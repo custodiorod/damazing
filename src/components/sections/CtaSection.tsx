@@ -81,7 +81,7 @@ export default function CtaSection() {
       {/* Glow effect */}
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-500/10 blur-3xl" />
 
-      <div className="relative mx-auto max-w-4xl text-center">
+      <div className="relative mx-auto max-w-5xl text-center">
         <h2 ref={titleRef} className="font-display text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
           Moda, agência ou foto freelancer:
           <br />
