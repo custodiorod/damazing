@@ -1,0 +1,371 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Variáveis base (dark mode padrão) ─── */
+:root {
+  --brand-purple: #06b6d4;
+  --brand-light: #22d3ee;
+  --brand-glow: rgba(6, 182, 212, 0.35);
+  --surface: #061522;
+  --surface-2: #0a2030;
+  --border: rgba(255, 255, 255, 0.08);
+
+  --bg-page: #020b14;
+  --bg-section: #061522;
+  --bg-card: #0a2030;
+  --text-primary: #f9fafb;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* ─── Light mode overrides ─── */
+body.light-mode {
+  --bg-page: #f8fafc;
+  --bg-section: #f1f5f9;
+  --bg-card: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --border-color: rgba(0, 0, 0, 0.08);
+  /* Superfícies usadas em border-gradient e border-gradient */
+  --surface: #ffffff;
+  --surface-2: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ─── Transição suave em todos os elementos ─── */
+body * {
+  transition-property: background-color, border-color, color, fill, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Links visitados — evita cor padrão do browser */
+body.light-mode a:visited {
+  color: inherit;
+}
+
+/* ══════════════════════════════════════════════
+   LIGHT MODE — overrides globais
+   ══════════════════════════════════════════════ */
+
+/* Página e seções */
+body.light-mode main {
+  background-color: var(--bg-page) !important;
+}
+
+body.light-mode section {
+  background-color: var(--bg-section);
+}
+
+/* Todos os backgrounds dark-* (incluindo variantes /60, /80, etc.) */
+body.light-mode [class*="bg-dark-"] {
+  background-color: var(--bg-card) !important;
+}
+
+/* Superfícies semi-transparentes sobre fundo claro */
+body.light-mode [class*="bg-white/5"],
+body.light-mode [class*="bg-white/10"] {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Backdrop blur containers */
+body.light-mode [class*="backdrop-blur"] {
+  background-color: rgba(255, 255, 255, 0.88) !important;
+}
+
+/* ── Textos ── */
+body.light-mode [class*="text-white"] {
+  color: var(--text-primary) !important;
+}
+
+body.light-mode [class*="text-zinc-1"],
+body.light-mode [class*="text-zinc-2"],
+body.light-mode [class*="text-zinc-3"],
+body.light-mode [class*="text-zinc-4"] {
+  color: var(--text-secondary) !important;
+}
+
+body.light-mode [class*="text-zinc-5"],
+body.light-mode [class*="text-zinc-6"],
+body.light-mode [class*="text-zinc-7"] {
+  color: var(--text-muted) !important;
+}
+
+/* ── Bordas ── */
+body.light-mode [class*="border-white/"] {
+  border-color: var(--border-color) !important;
+}
+
+/* ══════════════════════════════════════════════
+   NAVBAR
+   ══════════════════════════════════════════════ */
+body.light-mode nav {
+  background-color: rgba(248, 250, 252, 0.97) !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+body.light-mode nav a:not([class*="bg-gradient"]):not([class*="from-brand"]) {
+  color: var(--text-secondary) !important;
+}
+
+body.light-mode nav a:hover:not([class*="bg-gradient"]):not([class*="from-brand"]) {
+  color: var(--text-primary) !important;
+}
+
+body.light-mode nav button {
+  color: var(--text-primary) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+}
+
+body.light-mode .logo-text {
+  color: var(--text-primary) !important;
+}
+
+/* ══════════════════════════════════════════════
+   TABELA DE COMPARAÇÃO (CompareSection)
+   ══════════════════════════════════════════════ */
+body.light-mode table {
+  background-color: #ffffff !important;
+}
+
+body.light-mode thead tr {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+body.light-mode th {
+  color: var(--text-primary) !important;
+}
+
+body.light-mode td {
+  color: var(--text-primary) !important;
+  border-color: #e2e8f0 !important;
+}
+
+body.light-mode tr {
+  border-color: #e2e8f0 !important;
+}
+
+/* Coluna de destaque DAMazing na tabela */
+body.light-mode [class*="bg-brand-9"] {
+  background-color: rgba(6, 182, 212, 0.08) !important;
+}
+
+/* Ícones de comparação: ajuste de contraste para fundo claro */
+body.light-mode .text-emerald-300 {
+  color: #059669 !important;
+}
+
+body.light-mode .text-yellow-300 {
+  color: #b45309 !important;
+}
+
+/* ── Cores brand muito claras → versão escura para fundo claro ── */
+/* text-brand-100, text-brand-200, text-brand-300 são claros demais no light */
+body.light-mode [class*="text-brand-1"],
+body.light-mode [class*="text-brand-2"],
+body.light-mode [class*="text-brand-3"] {
+  color: #0e7490 !important;  /* brand-700 — legível no claro */
+}
+
+/* ── Cyan claro → escuro no light mode ── */
+/* text-cyan-300 (#67e8f9) e text-cyan-400 (#22d3ee) são invisíveis no branco */
+body.light-mode [class*="text-cyan-3"],
+body.light-mode [class*="text-cyan-4"] {
+  color: #0891b2 !important;  /* cyan-600 — legível */
+}
+
+body.light-mode [class*="text-cyan-2"] {
+  color: #0e7490 !important;  /* cyan-700 */
+}
+
+/* ══════════════════════════════════════════════
+   SEÇÃO O PROBLEMA (SecuritySection / FeatureCard)
+   ══════════════════════════════════════════════ */
+
+/* border-gradient usa var(--surface-2) — já corrigido via CSS var acima.
+   Garante borda visível no light mode */
+body.light-mode .border-gradient {
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, rgba(6, 182, 212, 0.35), rgba(6, 182, 212, 0.12)) border-box !important;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* Ícone do FeatureCard */
+body.light-mode [class*="bg-brand-7"] {
+  background-color: rgba(6, 182, 212, 0.1) !important;
+}
+
+/* ══════════════════════════════════════════════
+   SEÇÃO RESULTADOS REAIS (MetricsSection)
+   ══════════════════════════════════════════════ */
+
+/* Trust bar no fundo da seção */
+body.light-mode [class*="bg-cyan-950"] {
+  background-color: rgba(6, 182, 212, 0.07) !important;
+}
+
+body.light-mode [class*="border-cyan-5"] {
+  border-color: rgba(6, 182, 212, 0.25) !important;
+}
+
+/* Círculos de ícone no trust bar */
+body.light-mode [class*="bg-cyan-5"] {
+  background-color: rgba(6, 182, 212, 0.12) !important;
+}
+
+/* Valores riscados (2h, 0, 3x) — vermelho já tem bom contraste */
+/* Gradiente da seção MetricsSection */
+body.light-mode [class*="from-dark-9"][class*="to-dark-8"] {
+  background: linear-gradient(to bottom, #f1f5f9, #e2e8f0) !important;
+}
+
+/* ══════════════════════════════════════════════
+   PRODUCT TOUR — mockup interno
+   ══════════════════════════════════════════════ */
+
+/* Botões de step */
+body.light-mode button[class*="border-white/10"] {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+body.light-mode button[class*="border-cyan-500"] {
+  background-color: rgba(6, 182, 212, 0.08) !important;
+  border-color: #06b6d4 !important;
+}
+
+/* Área do mockup (browser fake) */
+body.light-mode [class*="bg-dark-800/80"],
+body.light-mode [class*="bg-dark-900/60"] {
+  background-color: #f8fafc !important;
+}
+
+/* Inputs e selects dentro do mockup */
+body.light-mode input,
+body.light-mode select {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: var(--text-primary) !important;
+}
+
+body.light-mode input::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* ══════════════════════════════════════════════
+   SEÇÃO CTA ("Moda, agência ou foto freelancer")
+   ══════════════════════════════════════════════ */
+body.light-mode #agencias {
+  background: linear-gradient(135deg, #e0f9fe 0%, #f0fdf4 60%, #f8fafc 100%) !important;
+}
+
+body.light-mode #agencias .absolute {
+  opacity: 0.15 !important;
+}
+
+body.light-mode #agencias [class*="text-white"],
+body.light-mode #agencias [class*="text-zinc-2"] {
+  color: #0f172a !important;
+}
+
+body.light-mode #agencias [class*="bg-white/5"] {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ══════════════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════════════ */
+body.light-mode footer {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+}
+
+body.light-mode footer a,
+body.light-mode footer a:link,
+body.light-mode footer a:visited {
+  color: var(--text-secondary) !important;
+}
+
+body.light-mode footer a:hover {
+  color: var(--text-primary) !important;
+}
+
+body.light-mode footer h3 {
+  color: var(--text-primary) !important;
+}
+
+body.light-mode footer p {
+  color: var(--text-secondary) !important;
+}
+
+/* ══════════════════════════════════════════════
+   CARDS e superfícies diversas
+   ══════════════════════════════════════════════ */
+
+/* Planos - cards não-populares */
+body.light-mode article {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Card popular do plano mantém destaque */
+body.light-mode article[class*="border-brand-4"] {
+  background-color: rgba(6, 182, 212, 0.05) !important;
+  border-color: #06b6d4 !important;
+}
+
+/* Seção de diferenciais e features */
+body.light-mode [class*="rounded-xl"][class*="border"][class*="bg-white"] {
+  background-color: #ffffff !important;
+}
+
+/* ══════════════════════════════════════════════
+   UTILITÁRIOS GLOBAIS
+   ══════════════════════════════════════════════ */
+
+* {
+  box-sizing: border-box;
+}
+
+.glow-purple {
+  box-shadow: 0 0 60px var(--brand-glow), 0 0 120px rgba(6, 182, 212, 0.12);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #ecfeff, #22d3ee, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.light-mode .text-gradient {
+  background: linear-gradient(135deg, #0e7490, #0891b2, #0369a1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.border-gradient {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--surface-2), var(--surface-2)) padding-box,
+    linear-gradient(135deg, rgba(34, 211, 238, 0.4), rgba(6, 182, 212, 0.1)) border-box;
+}
